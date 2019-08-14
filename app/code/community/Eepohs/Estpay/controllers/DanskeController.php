@@ -1,6 +1,6 @@
 <?php
 /**
- * Sampo.php
+ * DanskeController.php
  *
  * PHP version 5
  *
@@ -13,7 +13,7 @@
  */
 
 /**
- * SampoPank payment model for Estpay
+ * Controller for Danske of Estpay payment method
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -47,14 +47,13 @@
  * @author     Eepohs OÜ <info@eepohs.com>
  * @copyright  2012 Eepohs OÜ
  * @license    http://opensource.org/licenses/bsd-license.php BSDL
- * @version    Release: 1.3.2.3
+ * @version    Release: 1.4.0
  * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_Model_Sampo extends Eepohs_Estpay_Model_IPizza
+class Eepohs_Estpay_DanskeController extends Eepohs_Estpay_Controller_Abstract
 {
 
-    protected $_code = 'eepohs_sampo';
-    protected $_formBlockType = 'estpay/sampo';
-    protected $_gateway = 'sampo';
+    protected $_model = 'estpay/danske';
+    protected $_code = 'eepohs_danske';
 
 }

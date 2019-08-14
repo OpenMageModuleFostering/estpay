@@ -48,7 +48,7 @@
  * @author     Eepohs OÜ <info@eepohs.com>
  * @copyright  2012 Eepohs OÜ
  * @license    http://opensource.org/licenses/bsd-license.php BSDL
- * @version    Release: 1.3.2.3
+ * @version    Release: 1.4.0
  * @link       http://eepohs.com/
  */
 -->
@@ -361,8 +361,8 @@
                         </sort_order>
                     </fields>
                 </eepohs_swedbank>
-                <eepohs_sampo translate="label" module="estpay">
-                    <label>Sampo</label>
+                <eepohs_danske translate="label" module="estpay">
+                    <label>Danske Bank</label>
                     <sort_order>130</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -464,7 +464,7 @@
                             <show_in_store>1</show_in_store>
                         </sort_order>
                     </fields>
-                </eepohs_sampo>
+                </eepohs_danske>
                 <eepohs_krediidipank translate="label" module="estpay">
                     <label>Krediidipank</label>
                     <sort_order>140</sort_order>

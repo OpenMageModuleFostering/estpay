@@ -1,6 +1,7 @@
 <?php
+
 /**
- * sampo.phtml
+ * Danske.php
  *
  * PHP version 5
  *
@@ -13,7 +14,7 @@
  */
 
 /**
- * Sampo payment form block
+ * Danske form block for Estpay
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -47,18 +48,13 @@
  * @author     Eepohs OÜ <info@eepohs.com>
  * @copyright  2012 Eepohs OÜ
  * @license    http://opensource.org/licenses/bsd-license.php BSDL
- * @version    Release: 1.3.2.3
+ * @version    Release: 1.4.0
  * @link       http://eepohs.com/
  */
-?>
-<div class="payment_estpay_container payment_method_sampo">
-    <?php echo $this->getChildHtml('estpay_sampo_description') ?>
-    <form id="GatewayForm" name="sampo" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
-        <img src="<?php echo $this->getMethodLogoUrl(); ?>" class="payment-gateway-logo sampo_logo"/>
-        <?php foreach ($this->getFields() as $key => $value): ?>
-            <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
-        <?php endforeach; ?>
-        <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Start payment') ?></span></span></button>
-    </form>
-    <?php echo $this->getQuickRedirectScript(); ?>
-</div>
+class Eepohs_Estpay_Block_Danske extends Eepohs_Estpay_Block_IPizza
+{
+
+    protected $_code = 'eepohs_danske';
+    protected $_gateway = 'danske';
+
+}

@@ -47,7 +47,7 @@
  * @author     Eepohs OÜ <info@eepohs.com>
  * @copyright  2012 Eepohs OÜ
  * @license    http://opensource.org/licenses/bsd-license.php BSDL
- * @version    Release: 1.3.2.3
+ * @version    Release: 1.4.0
  * @link       http://eepohs.com/
  */
 class Eepohs_Estpay_Model_Krediidipank extends Eepohs_Estpay_Model_IPizza

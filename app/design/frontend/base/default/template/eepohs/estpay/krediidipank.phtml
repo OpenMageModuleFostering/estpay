@@ -47,13 +47,13 @@
  * @author     Eepohs OÜ <info@eepohs.com>
  * @copyright  2012 Eepohs OÜ
  * @license    http://opensource.org/licenses/bsd-license.php BSDL
- * @version    Release: 1.3.2.3
+ * @version    Release: 1.4.0
  * @link       http://eepohs.com/
  */
 ?>
 <div class="payment_estpay_container payment_method_krediidipank">
-    <?php echo $this->getChildHtml('estpay_sampo_description') ?>
-    <form id="GatewayForm" name="sampo" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
+    <?php echo $this->getChildHtml('estpay_danske_description') ?>
+    <form id="GatewayForm" name="danske" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
         <img src="<?php echo $this->getMethodLogoUrl(); ?>" class="payment-gateway-logo krediidipank_logo"/>
         <?php foreach ($this->getFields() as $key => $value): ?>
             <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
