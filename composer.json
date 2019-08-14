@@ -1,13 +1,13 @@
 {
     "name": "OpenMageModuleFostering/estpay",
     "type": "magento-module",
-    "license": "BSDL",
+    "license": "OSL",
     "homepage": "",
-    "description": "EstPay - Support for all Estonian payment gateways in one extension",
+    "description": "Multon Estonian payment methods",
     "authors": [
     {
-        "name": "Eepohs",
-        "email": "info@eepohs.com"
+        "name": "Multon",
+        "email": "magento@multon.ee"
     }
 ],
     "suggest": {

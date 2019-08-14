@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Tanel Raja <tanel.raja@multon.ee>
+ * @copyright Copyright (c) 2014, Multon (http://multon.ee/)
+ */
+-->
+<config>
+    <tabs>
+	<multon module="Multon_Core" translate="label">
+	    <label>Multon</label>
+	    <sort_order>1</sort_order>
+	</multon>
+    </tabs>
+    <sections>
+	<multon_core module="Multon_Core" translate="label">
+	    <label>Info</label>
+	    <tab>multon</tab>
+	    <frontend_type>text</frontend_type>
+	    <sort_order>10</sort_order>
+	    <show_in_default>1</show_in_default>
+	    <show_in_website>1</show_in_website>
+	    <show_in_store>1</show_in_store>
+	    <groups>
+		<info translate="label comment">
+		    <label>Info</label>
+		    <comment><![CDATA[<div style="float: left; margin-right: 10px;"><img src="/skin/adminhtml/default/default/images/multon/multon_small.png" /></div>
+<strong>Multon</strong> is an e-commerce development house specializing on building Magento based web stores.<br /><br />
+			
+Multon, Pärnu mnt 102, 11312 Tallinn, Estonia<br />
++372 604 1104, info@multon.ee, <a href="http://multon.ee">multon.ee</a>]]></comment>
+		    <frontend_type>text</frontend_type>
+		    <sort_order>10</sort_order>
+		    <show_in_default>1</show_in_default>
+		    <show_in_website>1</show_in_website>
+		    <show_in_store>1</show_in_store>
+		</info>
+	    </groups>
+	</multon_core>
+    </sections>
+</config>

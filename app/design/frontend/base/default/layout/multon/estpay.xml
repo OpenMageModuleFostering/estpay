@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <estpay_seb_redirect>
+        <reference name="content">
+            <block type="estpay/seb" name="estpay_seb" template="multon/estpay/seb.phtml">
+                <block type="cms/block" name="estpay_seb_description">
+                    <action method="setBlockId">
+                        <block_id>estpay_seb_description</block_id>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </estpay_seb_redirect>
+    <estpay_nordea_redirect>
+        <reference name="content">
+            <block type="estpay/nordea" name="estpay_nordea" template="multon/estpay/nordea.phtml">
+                <block type="cms/block" name="estpay_nordea_description">
+                    <action method="setBlockId">
+                        <block_id>estpay_nordea_description</block_id>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </estpay_nordea_redirect>
+    <estpay_swedbank_redirect>
+        <reference name="content">
+            <block type="estpay/swedbank" name="estpay_swedbank" template="multon/estpay/swedbank.phtml">
+                <block type="cms/block" name="estpay_swedbank_description">
+                    <action method="setBlockId">
+                        <block_id>estpay_swedbank_description</block_id>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </estpay_swedbank_redirect>
+    <estpay_danske_redirect>
+        <reference name="content">
+            <block type="estpay/danske" name="estpay_danske" template="multon/estpay/danske.phtml">
+                <block type="cms/block" name="estpay_danske_description">
+                    <action method="setBlockId">
+                        <block_id>estpay_danske_description</block_id>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </estpay_danske_redirect>
+    <estpay_krediidipank_redirect>
+        <reference name="content">
+            <block type="estpay/krediidipank" name="estpay_krediidipank" template="multon/estpay/krediidipank.phtml">
+                <block type="cms/block" name="estpay_krediidipank_description">
+                    <action method="setBlockId">
+                        <block_id>estpay_krediidipank_description</block_id>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </estpay_krediidipank_redirect>
+    <estpay_estcard_redirect>
+        <reference name="content">
+            <block type="estpay/estcard" name="estpay_estcard" template="multon/estpay/estcard.phtml">
+                <block type="cms/block" name="estpay_estcard_description">
+                    <action method="setBlockId">
+                        <block_id>estpay_estcard_description</block_id>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </estpay_estcard_redirect>
+    <estpay_lhv_redirect>
+        <reference name="content">
+            <block type="estpay/lhv" name="estpay_lhv" template="multon/estpay/lhv.phtml">
+                <block type="cms/block" name="estpay_lhv_description">
+                    <action method="setBlockId">
+                        <block_id>estpay_lhv_description</block_id>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </estpay_lhv_redirect>
+    <default>
+        <reference name="footer">
+            <block type="estpay/info" name="estpay_info" template="multon/estpay/info.phtml" />
+        </reference>
+    </default>
+</layout>

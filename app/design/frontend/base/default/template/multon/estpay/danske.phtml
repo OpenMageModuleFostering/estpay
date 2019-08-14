@@ -1,0 +1,11 @@
+<div class="payment_estpay_container payment_method_danske">
+    <?php echo $this->getChildHtml('estpay_danske_description') ?>
+    <form id="GatewayForm" name="danske" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
+        <img src="<?php echo $this->getMethodLogoUrl(); ?>" class="payment-gateway-logo danske_logo"/>
+        <?php foreach ($this->getFields() as $key => $value) { ?>
+            <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
+        <?php } ?>
+        <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Start payment') ?></span></span></button>
+    </form>
+    <?php echo $this->getQuickRedirectScript(); ?>
+</div>

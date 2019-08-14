@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Tanel Raja <tanel.raja@multon.ee>
+ * @copyright Copyright (c) 2014, Multon (http://multon.ee/)
+ */
+-->
+<config>
+    <modules>
+	<Multon_Core>
+	    <version>1.0.4</version>
+	</Multon_Core>
+    </modules>
+    <global>
+	<helpers>
+	    <Multon_Core>
+		<class>Multon_Core_Helper</class>
+	    </Multon_Core>
+	</helpers>
+	<events>
+	    <adminhtml_init_system_config>
+		<observers>
+		    <multon_core_model_observer>
+			<type>model</type>
+			<class>Multon_Core_Model_Observer</class>
+			<method>multon_tab</method>
+		    </multon_core_model_observer>
+		</observers>
+	    </adminhtml_init_system_config>
+	</events>
+    </global>
+    <adminhtml>
+	<translate>
+	    <modules>
+		<Multon_Core>
+		    <files>
+			<default>Multon_Core.csv</default>
+		    </files>
+		</Multon_Core>
+	    </modules>
+	</translate>
+    </adminhtml>
+</config>

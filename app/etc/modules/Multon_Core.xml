@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+	<Multon_Core>
+	    <active>true</active>
+	    <codePool>community</codePool>
+	</Multon_Core>
+    </modules>
+</config>

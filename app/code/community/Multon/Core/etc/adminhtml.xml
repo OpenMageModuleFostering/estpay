@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Tanel Raja <tanel.raja@multon.ee>
+ * @copyright Copyright (c) 2014, Multon (http://multon.ee/)
+ */
+-->
+<config>
+    <acl>
+	<resources>
+	    <all>
+		<title>Allow Everything</title>
+	    </all>
+	    <admin>
+		<children>
+		    <system>
+			<children>
+			    <config>
+				<children>
+				    <multon_core>
+					<title>Multon Core</title>
+				    </multon_core>
+				</children>
+			    </config>
+			</children>
+		    </system>
+		</children>
+	    </admin>
+	</resources>
+    </acl>
+</config>

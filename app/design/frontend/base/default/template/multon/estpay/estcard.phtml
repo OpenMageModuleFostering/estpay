@@ -1,0 +1,11 @@
+<div class="payment_estpay_container payment_method_estcard">
+    <?php echo $this->getChildHtml('estpay_estcard_description') ?>
+    <form id="GatewayForm" name="estcard" action="<?php echo $this->getGatewayUrl() ?>" method="POST" target="_top">
+        <img src="<?php echo $this->getMethodLogoUrl(); ?>" class="payment-gateway-logo estcard_logo"/>
+        <?php foreach ($this->getFields() as $key => $value) { ?>
+            <input type="hidden" name="<?php echo $key ?>" value="<?php echo $value ?>" />
+        <?php } ?>
+        <button class="button" onclick="this.form.submit();"><span><span><?php echo $this->__('Start payment') ?></span></span></button>
+    </form>
+    <?php echo $this->getQuickRedirectScript(); ?>
+</div>
