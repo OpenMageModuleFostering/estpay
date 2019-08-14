@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Seb.php
+ * info.phtml
  *
  * PHP version 5
  *
@@ -12,9 +11,8 @@
  * @license    http://opensource.org/licenses/bsd-license.php BSDL
  * @link       http://eepohs.com/
  */
-
 /**
- * SEB form block for Estpay
+ * Info block for Estpay enabled method logos
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -48,13 +46,18 @@
  * @author     Eepohs OÜ <info@eepohs.com>
  * @copyright  2012 Eepohs OÜ
  * @license    http://opensource.org/licenses/bsd-license.php BSDL
- * @version    Release: 1.3.2.3
+ * @version    Release 1.3.2.3
  * @link       http://eepohs.com/
+ *
  */
-class Eepohs_Estpay_Block_Seb extends Eepohs_Estpay_Block_IPizza
-{
-
-    protected $_code = 'eepohs_seb';
-    protected $_gateway = 'seb';
-
-}
+?>
+<?php $gateways = $this->getEnabledGateways() ?>
+<?php if ( is_array($gateways) && sizeof($gateways) > 0 ): ?>
+    <ul class="estpay-logo-list">
+    <?php foreach ( $gateways as $gateway ): ?>
+            <li class="item">
+                <img src="<?php echo $gateway['logo'] ?>" alt="<?php echo $gateway['title'] ?>" title="<?php echo $gateway['title'] ?>"/>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

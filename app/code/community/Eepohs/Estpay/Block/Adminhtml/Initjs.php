@@ -1,8 +1,16 @@
 <?php
 
 /**
+ * Initjs.php
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
@@ -34,21 +42,22 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.1
- * @author Eepohs OÜ
- * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  2012 Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: 1.3.2.3
+ * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_Block_Adminhtml_Initjs
-    extends Mage_Adminhtml_Block_Template
+class Eepohs_Estpay_Block_Adminhtml_Initjs extends Mage_Adminhtml_Block_Template
 {
 
     /**
      * Include JS in the head if section is Eepohs/Estpay
+     *
+     * @return void
      */
     protected function _prepareLayout()
     {
@@ -61,6 +70,11 @@ class Eepohs_Estpay_Block_Adminhtml_Initjs
         parent::_prepareLayout();
     }
 
+    /**
+     * Renders current block to HTML
+     *
+     * @return string HTML
+     */
     protected function _toHtml()
     {
         $section = $this->getAction()->getRequest()->getParam('section', false);
@@ -71,13 +85,18 @@ class Eepohs_Estpay_Block_Adminhtml_Initjs
         }
     }
 
+    /**
+     * Returns version number of Estpay
+     *
+     * @return string
+     */
     public function getModuleVersion()
     {
         return (string) Mage::getConfig()
                 ->getNode()
             ->modules
             ->Eepohs_Estpay
-             ->version;
+            ->version;
     }
 
 }

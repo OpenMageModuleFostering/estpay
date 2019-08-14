@@ -1,12 +1,20 @@
 <?php
 
 /**
+ * Abstract.php
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
- * Abstract controller for Estpay payment methods
+ * Abstract controller for Estpay that all controllers will inherit from
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -34,19 +42,21 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.1
- * @author Eepohs OÜ
- * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  2012 Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: 1.3.2.3
+ * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_Controller_Abstract
-    extends Mage_Core_Controller_Front_Action
+class Eepohs_Estpay_Controller_Abstract extends Mage_Core_Controller_Front_Action
 {
-
+    /**
+     *
+     * @var specifies log file name for Estpay
+     */
     protected $logFile = 'estpay.log';
 
     /**
@@ -57,30 +67,25 @@ class Eepohs_Estpay_Controller_Abstract
 
     /**
      * This action redirects user to bank for payment
+     *
+     * @return void
      */
     public function redirectAction()
     {
 
         /* Send order confirmation */
-        if (
-            Mage::getStoreConfig(
-                'payment/' . $this->_code . '/order_confirmation'
-            )
-            == '1'
-        ) {
+        if (Mage::getStoreConfig('payment/' . $this->_code . '/order_confirmation') == '1') {
             try {
                 $order = Mage::getModel('sales/order');
                 $order->load(
-                    Mage::getSingleton('checkout/session')->getLastOrderId()
+                        Mage::getSingleton('checkout/session')->getLastOrderId()
                 );
                 $order->sendNewOrderEmail();
                 $order->save();
-            } catch ( Exception $e ) {
+            } catch (Exception $e) {
                 Mage::log(
-                    sprintf(
-                        '%s(%s): %s', __METHOD__, __LINE__,
-                        print_r($e->getMessage(), true)
-                    ), null, $this->logFile
+                        sprintf('%s(%s): %s', __METHOD__, __LINE__, print_r($e->getMessage(), true)
+                        ), null, $this->logFile
                 );
             }
         }
@@ -94,40 +99,43 @@ class Eepohs_Estpay_Controller_Abstract
      * payment method
      * It verifies signature and creates invoice.
      * In case of verification failure it cancels the order
+     *
+     * @return void
      */
     public function returnAction()
     {
 
         Mage::log(
-            sprintf(
-                '%s(%s)@%s: %s',
-                __METHOD__,
-                __LINE__,
-                $_SERVER['REMOTE_ADDR'],
-                print_r($this->getRequest()->getParams(), true)
-            ),
-            null,
-            $this->logFile
+                sprintf(
+                        '%s(%s)@%s: %s', __METHOD__, __LINE__, $_SERVER['REMOTE_ADDR'],
+                        print_r($this->getRequest()->getParams(), true)
+                ), null, $this->logFile
         );
         $session = Mage::getSingleton('checkout/session');
         $orderId = $session->getLastRealOrderId();
-        if ( !$orderId ) {
+        if (!$orderId) {
             $orderId = $this->getRequest()->getParam('VK_STAMP');
         }
-        if ( !$orderId ) {
+        if (!$orderId) {
             $this->_redirect('checkout/onepage/failure');
             return;
         }
         $model = Mage::getModel($this->_model);
         $model->setOrderId($orderId);
         $verify = $model->verify($this->getRequest()->getParams());
-        if ( $verify === true ) {
-            $model->createInvoice();
-            $this->_redirect('checkout/onepage/success');
-        } else {
-            $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
-            $order->cancel()->save();
-            $this->_redirect('checkout/onepage/failure');
+        switch ($verify) {
+            case Eepohs_Estpay_Helper_Data::_VERIFY_SUCCESS:
+                $model->createInvoice();
+                $this->_redirect('checkout/onepage/success');
+                break;
+            case Eepohs_Estpay_Helper_Data::_VERIFY_CANCEL:
+                $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+                $order->cancel()->save();
+                $this->_redirect('checkout/onepage/failure');
+                break;
+            case Eepohs_Estpay_Helper_Data::_VERIFY_CORRUPT:
+            default:
+                break;
         }
     }
 

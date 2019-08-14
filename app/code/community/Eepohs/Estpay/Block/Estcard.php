@@ -1,12 +1,20 @@
 <?php
 
 /**
+ * Estcard.php
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
- * Estpay block for Estcard
+ * Estcard form block for Estpay
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -34,22 +42,27 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.1
- * @author Eepohs OÜ
- * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  2012 Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: 1.3.2.3
+ * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_Block_Estcard
-    extends Eepohs_Estpay_Block_Abstract
+class Eepohs_Estpay_Block_Estcard extends Eepohs_Estpay_Block_Abstract
 {
 
     protected $_code = 'eepohs_estcard';
     protected $_gateway = 'estcard';
 
+    /**
+     * Populates and returns array for form that
+     * will be submitted to Estcard
+     *
+     * @return array
+     */
     public function getFields()
     {
 
@@ -93,7 +106,7 @@ class Eepohs_Estpay_Block_Estcard
         // $fields['charEncoding'] = 'UTF-8';
 
         $fields['feedBackUrl'] = Mage::getUrl(
-            'estpay/' . $this->_gateway . '/return', array('_nosid' => true)
+                'estpay/' . $this->_gateway . '/return', array('_nosid' => true)
         );
         $fields['delivery'] = 'T';
         // Hardcoded for test purposes T = Physical delivery,
@@ -122,15 +135,16 @@ class Eepohs_Estpay_Block_Estcard
 
     /**
      * Get Estcard method logo URL
-     * @return type
+     * 
+     * @return string
      */
     public function getMethodLogoUrl()
     {
         return $this->getSkinUrl(
-            sprintf(
-                'images/eepohs/estpay/%s_logo_120x31.gif',
-                strtolower($this->_gateway)
-            )
+                sprintf(
+                    'images/eepohs/estpay/%s_logo_120x31.gif',
+                    strtolower($this->_gateway)
+                )
         );
     }
 

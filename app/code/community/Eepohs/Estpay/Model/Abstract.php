@@ -1,12 +1,20 @@
 <?php
 
 /**
+ * Abstract.php
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
- * Abstract Estpay Model
+ * Abstract model for Estpay payment methods
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -34,19 +42,17 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.1
- * @author Eepohs OÜ
- * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  2012 Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: 1.3.2.3
+ * @link       http://eepohs.com/
  */
-abstract class Eepohs_Estpay_Model_Abstract
-    extends Mage_Payment_Model_Method_Abstract
+abstract class Eepohs_Estpay_Model_Abstract extends Mage_Payment_Model_Method_Abstract
 {
-
     protected $_canAuthorize = true;
     protected $_isGateway = true;
     protected $_canUseCheckout = true;
@@ -69,34 +75,30 @@ abstract class Eepohs_Estpay_Model_Abstract
     public function createInvoice()
     {
         $order = Mage::getModel('sales/order')
-            ->loadByIncrementId($this->getOrderId());
+                ->loadByIncrementId($this->getOrderId());
 
-        if ( $order->canInvoice() ) {
+        if ($order->canInvoice()) {
             $invoice = $order->prepareInvoice();
             $invoice->pay()->register();
             $invoice->save();
 
+            $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
+            $order->save();
+
             /* Send invoice */
-            if (
-                Mage::getStoreConfig(
-                    'payment/' . $this->_code . '/invoice_confirmation'
-                ) == '1'
-            ) {
+            if (Mage::getStoreConfig('payment/' . $this->_code . '/invoice_confirmation') == '1') {
                 $invoice->sendEmail(true, '');
             }
 
             Mage::register('current_invoice', $invoice);
         }
-
-        $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
-        $order->save();
     }
 
     /**
      * Abstract method to be overloaded by implementing classes.
      * This is used to verify response from bank
      *
-     * @return boolean
+     * @return int
      */
     public abstract function verify(array $params = array());
 }

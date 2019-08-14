@@ -1,10 +1,18 @@
 /**
+ * estpay.js
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
- * Custom JS for Estpay payment module
+ * Estpay custom javascript for backend
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -32,14 +40,14 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.1
- * @author Eepohs OÜ
- * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  2012 Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: 1.3.2.3
+ * @link       http://eepohs.com/
  */
 Event.observe(window, 'load', function() {
     initEepohsPayment();
@@ -58,7 +66,7 @@ EepohsPayment.prototype = {
             function(item){
                 var img = document.createElement('img');
                 Element.extend(img);
-                img.src = SKIN_URL + 'images/eepohs/estpay/eepohs_logo_small.png';
+                img.src = EEPOHS_SKIN_URL + 'images/eepohs/estpay/eepohs_logo_small.png';
                 img.addClassName('eepohs-logo title-logo');
                 img.writeAttribute('alt', 'Eepohs');
                 img.writeAttribute('title', 'Eepohs');

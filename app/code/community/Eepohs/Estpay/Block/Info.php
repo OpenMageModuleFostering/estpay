@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Seb.php
+ * Info.php
  *
  * PHP version 5
  *
@@ -14,7 +14,7 @@
  */
 
 /**
- * SEB form block for Estpay
+ * Information block that returns list of enabled banks
  *
  * PLEASE READ THIS SOFTWARE LICENSE AGREEMENT ("LICENSE") CAREFULLY
  * BEFORE USING THE SOFTWARE. BY USING THE SOFTWARE, YOU ARE AGREEING
@@ -51,10 +51,32 @@
  * @version    Release: 1.3.2.3
  * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_Block_Seb extends Eepohs_Estpay_Block_IPizza
+class Eepohs_Estpay_Block_Info extends Mage_Core_Block_Template
 {
 
-    protected $_code = 'eepohs_seb';
-    protected $_gateway = 'seb';
+    /**
+     * Returns array of enabled Estpay
+     * gateways
+     *
+     * @return array
+     */
+    public function getEnabledGateways()
+    {
+        $paymentMethods = Mage::getSingleton('payment/config')->getActiveMethods();
+        $methods = array();
+        foreach ($paymentMethods as $paymentCode => $paymentModel) {
+            if ($paymentModel instanceof Eepohs_Estpay_Model_Abstract) {
+                $paymentTitle = Mage::getStoreConfig('payment/' . $paymentCode . '/title');
+                $formBlockType = $paymentModel->getFormBlockType();
+                $formBlockInstance = Mage::getBlockSingleton($formBlockType);
+                $methods[] = array(
+                    'title' => $paymentTitle,
+                    'code' => $paymentCode,
+                    'logo' => $formBlockInstance->getMethodLogoUrl()
+                );
+            }
+        }
+        return $methods;
+    }
 
 }

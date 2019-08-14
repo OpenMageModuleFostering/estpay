@@ -1,8 +1,16 @@
 <?php
 
 /**
+ * Abstract.php
+ *
+ * PHP version 5
+ *
+ * @category   Magento
  * @package    Eepohs
  * @subpackage Estpay
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @link       http://eepohs.com/
  */
 
 /**
@@ -34,17 +42,16 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
- * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.1
- * @author Eepohs OÜ
- * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
- *
+ * @category   Community
  * @package    Eepohs
  * @subpackage Estpay
- * @category   Payment methods
+ * @author     Eepohs OÜ <info@eepohs.com>
+ * @copyright  2012 Eepohs OÜ
+ * @license    http://opensource.org/licenses/bsd-license.php BSDL
+ * @version    Release: 1.3.2.3
+ * @link       http://eepohs.com/
  */
-class Eepohs_Estpay_Block_Abstract
-    extends Mage_Payment_Block_Form
+class Eepohs_Estpay_Block_Abstract extends Mage_Payment_Block_Form
 {
 
     /**
@@ -59,6 +66,7 @@ class Eepohs_Estpay_Block_Abstract
 
     /**
      * Adds payment mehtod logotypes after method name
+     *
      * @return string
      */
     public function getMethodLabelAfterHtml()
@@ -93,8 +101,8 @@ class Eepohs_Estpay_Block_Abstract
      * returns javascript block that redirects user
      * to bank without intermediate page
      *
-     * @since 2.0.0
-     * @return outstr javascript block
+     * @since 1.3.0
+     * @return outstr Javascript block
      */
     public function getQuickRedirectScript()
     {
