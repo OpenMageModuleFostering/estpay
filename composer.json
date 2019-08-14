@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/estpay",
+    "type": "magento-module",
+    "license": "BSDL",
+    "homepage": "",
+    "description": "EstPay - Support for all Estonian payment gateways in one extension",
+    "authors": [
+    {
+        "name": "Eepohs",
+        "email": "info@eepohs.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
