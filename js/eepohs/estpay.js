@@ -33,7 +33,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.0.1
+ * @version 1.3.1
  * @author Eepohs OÜ
  * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
  *

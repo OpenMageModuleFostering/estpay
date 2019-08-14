@@ -35,7 +35,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.0.1
+ * @version 1.3.1
  * @author Eepohs OÜ
  * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
  *
@@ -78,7 +78,10 @@ class Eepohs_Estpay_Model_Nordea extends Eepohs_Estpay_Model_Abstract
         ) {
             Mage::log(
                 sprintf(
-                    "%s (%s): (Nordea) Invalid MAC code", __METHOD__, __LINE__
+                    "%s (%s)@%s: (Nordea) Invalid MAC code",
+                    __METHOD__,
+                    __LINE__,
+                    $_SERVER['REMOTE_ADDR']
                 )
             );
             return false;
@@ -94,9 +97,11 @@ class Eepohs_Estpay_Model_Nordea extends Eepohs_Estpay_Model_Abstract
         ) {
             Mage::log(
                 sprintf(
-                    "%s (%s): (Nordea): Reference number doesn't match
-                (potential tampering attempt). IP logged: %s",
-                    __METHOD__, __LINE__, $_SERVER['REMOTE_ADDR']
+                    "%s (%s)@%s: (Nordea): Reference number doesn't match
+                (potential tampering attempt).",
+                    __METHOD__,
+                    __LINE__,
+                    $_SERVER['REMOTE_ADDR']
                 )
             );
             return false;

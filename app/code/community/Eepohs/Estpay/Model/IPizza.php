@@ -35,7 +35,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.0.1
+ * @version 1.3.1
  * @author Eepohs OÜ
  * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
  *
@@ -55,9 +55,14 @@ class Eepohs_Estpay_Model_IPizza extends Eepohs_Estpay_Model_Abstract
         ) {
             Mage::log(
                 sprintf(
-                    '%s (%s): IPizza return service is not 1101: %s',
-                    __METHOD__, __LINE__, $params['VK_SERVICE']
-                )
+                    '%s (%s)@%s: IPizza return service is not 1101: %s',
+                    __METHOD__,
+                    __LINE__,
+                    $_SERVER['REMOTE_ADDR'],
+                    $params['VK_SERVICE']
+                ),
+                null,
+                $this->logFile
             );
             return false;
         }
@@ -73,9 +78,15 @@ class Eepohs_Estpay_Model_IPizza extends Eepohs_Estpay_Model_Abstract
         ) {
             Mage::log(
                 sprintf(
-                    '%s (%s): Wrong merchant ID used for return: %s vs %s',
-                    __METHOD__, __LINE__, $params['VK_REC_ID'], $vkSndId
-                )
+                    '%s (%s)@%s: Wrong merchant ID used for return: %s vs %s',
+                    __METHOD__,
+                    __LINE__,
+                    $_SERVER['REMOTE_ADDR'],
+                    $params['VK_REC_ID'],
+                    $vkSndId
+                ),
+                null,
+                $this->logFile
             );
             return false;
         }
@@ -140,6 +151,14 @@ class Eepohs_Estpay_Model_IPizza extends Eepohs_Estpay_Model_Abstract
             return true;
         }
 
+        Mage::log(
+            sprintf(
+                '%s (%s)@%s: Verification of signature failed for %s',
+                __METHOD__, __LINE__, $_SERVER['REMOTE_ADDR'], $params['VK_SND_ID']
+            ),
+            null,
+            $this->logFile
+        );
         return false;
     }
 
@@ -157,6 +176,14 @@ class Eepohs_Estpay_Model_IPizza extends Eepohs_Estpay_Model_Abstract
             )
         );
         if ( $key === false ) {
+             Mage::log(
+                sprintf(
+                    '%s (%s): Public key not found for %s',
+                    __METHOD__, __LINE__, $this->_code
+                ),
+                null,
+                $this->logFile
+            );
             Mage::throwException(
                 $this->_getHelper()->__(
                     'Public key for ' . $this->_code . ' not set'

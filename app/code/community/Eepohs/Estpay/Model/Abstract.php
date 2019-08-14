@@ -35,7 +35,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.0.1
+ * @version 1.3.1
  * @author Eepohs OÜ
  * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
  *
@@ -50,6 +50,7 @@ abstract class Eepohs_Estpay_Model_Abstract
     protected $_canAuthorize = true;
     protected $_isGateway = true;
     protected $_canUseCheckout = true;
+    protected $logFile = 'estpay.log';
 
     /**
      * Order Id to create invoice for

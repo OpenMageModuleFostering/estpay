@@ -35,7 +35,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.0.1
+ * @version 1.3.1
  * @author Eepohs OÜ
  * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
  *
@@ -60,9 +60,15 @@ class Eepohs_Estpay_Model_Estcard extends Eepohs_Estpay_Model_Abstract
         if ( !isset($params['id']) || $params['id'] != $merchantId ) {
             Mage::log(
                 sprintf(
-                    '%s (%s): Wrong merchant ID used for return: %s vs %s',
-                    __METHOD__, __LINE__, $params['id'], $merchantId
-                )
+                    '%s (%s)@%s: Wrong merchant ID used for return: %s vs %s',
+                    __METHOD__,
+                    __LINE__,
+                    $_SERVER['REMOTE_ADDR'],
+                    $params['id'],
+                    $merchantId
+                ),
+                null,
+                $this->logFile
             );
             return false;
         }
@@ -91,6 +97,16 @@ class Eepohs_Estpay_Model_Estcard extends Eepohs_Estpay_Model_Abstract
         if ( $result && $params['respcode'] == '000' )
             return true;
 
+        Mage::log(
+            sprintf(
+                '%s (%s)@%s: Verification of signature failed for estcard',
+                __METHOD__,
+                __LINE__,
+                $_SERVER['REMOTE_ADDR']
+            ),
+            null,
+            $this->logFile
+        );
         return false;
     }
 

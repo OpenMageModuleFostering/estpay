@@ -48,7 +48,7 @@
  * @author     Eepohs OÜ <info@eepohs.com>
  * @copyright  2012 Eepohs OÜ
  * @license    http://opensource.org/licenses/bsd-license.php BSDL
- * @version    Release 1.3.0.1
+ * @version    Release 1.3.1
  * @link       http://eepohs.com/
  *
  */

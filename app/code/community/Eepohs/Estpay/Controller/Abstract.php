@@ -35,7 +35,7 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @license http://opensource.org/licenses/bsd-license.php
- * @version 1.3.0.1
+ * @version 1.3.1
  * @author Eepohs OÜ
  * @copyright 2012 Eepohs OÜ http://www.eepohs.com/
  *
@@ -46,6 +46,8 @@
 class Eepohs_Estpay_Controller_Abstract
     extends Mage_Core_Controller_Front_Action
 {
+
+    protected $logFile = 'estpay.log';
 
     /**
      *
@@ -78,7 +80,7 @@ class Eepohs_Estpay_Controller_Abstract
                     sprintf(
                         '%s(%s): %s', __METHOD__, __LINE__,
                         print_r($e->getMessage(), true)
-                    )
+                    ), null, $this->logFile
                 );
             }
         }
@@ -96,6 +98,17 @@ class Eepohs_Estpay_Controller_Abstract
     public function returnAction()
     {
 
+        Mage::log(
+            sprintf(
+                '%s(%s)@%s: %s',
+                __METHOD__,
+                __LINE__,
+                $_SERVER['REMOTE_ADDR'],
+                print_r($this->getRequest()->getParams(), true)
+            ),
+            null,
+            $this->logFile
+        );
         $session = Mage::getSingleton('checkout/session');
         $orderId = $session->getLastRealOrderId();
         if ( !$orderId ) {
