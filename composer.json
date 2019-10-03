@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/estpay",
+    "name": "OpenMageModuleFostering\/estpay",
     "type": "magento-module",
     "license": "OSL",
     "homepage": "",
     "description": "Multon Estonian payment methods",
     "authors": [
-    {
-        "name": "Multon",
-        "email": "magento@multon.ee"
-    }
-],
+        {
+            "name": "Multon",
+            "email": "magento@multon.ee"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
